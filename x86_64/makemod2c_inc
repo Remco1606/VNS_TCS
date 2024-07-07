@@ -1,0 +1,16 @@
+./AXNODE.c: ../AXNODE.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "AXNODE.mod" -o "/users/rdvanderstoep/Documents/VNS_Simulation_Learning/x86_64")
+
+./AXNODE.o: ./AXNODE.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
+./xtra.c: ../xtra.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\\n"
+	(cd "..";  MODLUNIT=$(NRNUNITS) $(NOCMODL) "xtra.mod" -o "/users/rdvanderstoep/Documents/VNS_Simulation_Learning/x86_64")
+
+./xtra.o: ./xtra.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\\n"
+	$(COMPILE) -I".." $(INCLUDES) -fPIC -c $< -o $@
+
